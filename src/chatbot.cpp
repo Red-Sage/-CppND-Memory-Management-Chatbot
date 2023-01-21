@@ -30,9 +30,9 @@ ChatBot::ChatBot(std::string filename)
     _image = new wxBitmap(filename, wxBITMAP_TYPE_PNG);
 }
 
-ChatBot::~ChatBot()
+ChatBot::~ChatBot() // Rule of 5 (1/5)
 {
-    std::cout << "ChatBot Destructor" << std::endl;
+    std::cout << "ChatBot Destructor: calling delete on " << _image << std::endl;
 
     // deallocate heap memory
     if(_image != NULL) // Attention: wxWidgets used NULL and not nullptr
@@ -44,6 +44,65 @@ ChatBot::~ChatBot()
 
 //// STUDENT CODE
 ////
+ChatBot::ChatBot(const ChatBot &source) // Rule of 5 (2/5)
+{
+    std::cout << "ChatBot Copy Constructor: copying " << &source << " to " << this << std::endl;
+
+    _image = source._image;
+    
+    _currentNode = source._currentNode;
+    _rootNode = source._rootNode;
+    _chatLogic = source._chatLogic;
+
+}
+
+ChatBot& ChatBot::operator=(const ChatBot &source) // rule of 5 (3/5)
+{
+    std::cout << "ChatBot Assignment Operator: assignin " << &source << " to " << this << std::endl;
+
+    if(this == &source)
+        return *this;
+    
+    *_image = *source._image;
+    *_currentNode = *source._currentNode;
+    *_rootNode = *source._rootNode;
+    *_chatLogic = *source._chatLogic;
+    return *this;
+}
+
+ChatBot::ChatBot(ChatBot &&source) // Rule of 5 (4/5)
+{
+    std::cout << "ChatBot Move Constructor: Construct " << this << " from " << &source << std::endl;
+    _image = source._image;
+    source._image = NULL;
+    _currentNode = source._currentNode;
+    source._currentNode = NULL;
+    _rootNode = source._rootNode;
+    source._rootNode = NULL;
+    _chatLogic = source._chatLogic;
+    source._rootNode = NULL;
+
+}
+
+ChatBot& ChatBot::operator=(ChatBot &&source) // Rule of 5 (5/5)
+{
+    std::cout << "ChatBot Moving Assignment: assigning" << &source << " to " << this << std::endl;
+
+    if (this == &source)
+        return *this;
+
+    _image = source._image;
+    source._image = NULL;
+    _currentNode = source._currentNode;
+    source._currentNode = NULL;
+    _rootNode = source._rootNode;
+    source._rootNode = NULL;
+    _chatLogic = source._chatLogic;
+    source._rootNode = NULL;
+
+    return *this;
+    
+}
 
 ////
 //// EOF STUDENT CODE
