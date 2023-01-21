@@ -32,7 +32,7 @@ ChatBot::ChatBot(std::string filename)
 
 ChatBot::~ChatBot() // Rule of 5 (1/5)
 {
-    std::cout << "ChatBot Destructor: calling delete on " << _image << std::endl;
+    std::cout << "ChatBot Destructor" << std::endl;
 
     // deallocate heap memory
     if(_image != NULL) // Attention: wxWidgets used NULL and not nullptr
@@ -46,7 +46,7 @@ ChatBot::~ChatBot() // Rule of 5 (1/5)
 ////
 ChatBot::ChatBot(const ChatBot &source) // Rule of 5 (2/5)
 {
-    std::cout << "ChatBot Copy Constructor: copying " << &source << " to " << this << std::endl;
+    std::cout << "ChatBot Copy Constructor" << std::endl;
 
     _image = source._image;
     
@@ -58,7 +58,7 @@ ChatBot::ChatBot(const ChatBot &source) // Rule of 5 (2/5)
 
 ChatBot& ChatBot::operator=(const ChatBot &source) // rule of 5 (3/5)
 {
-    std::cout << "ChatBot Assignment Operator: assignin " << &source << " to " << this << std::endl;
+    std::cout << "ChatBot Assignment Operator" << std::endl;
 
     if(this == &source)
         return *this;
@@ -72,21 +72,21 @@ ChatBot& ChatBot::operator=(const ChatBot &source) // rule of 5 (3/5)
 
 ChatBot::ChatBot(ChatBot &&source) // Rule of 5 (4/5)
 {
-    std::cout << "ChatBot Move Constructor: Construct " << this << " from " << &source << std::endl;
+    std::cout << "ChatBot Move Constructor" << std::endl;
     _image = source._image;
     source._image = NULL;
     _currentNode = source._currentNode;
-    source._currentNode = NULL;
+    source._currentNode = nullptr;
     _rootNode = source._rootNode;
-    source._rootNode = NULL;
+    source._rootNode = nullptr;
     _chatLogic = source._chatLogic;
-    source._rootNode = NULL;
+    source._rootNode = nullptr;
 
 }
 
 ChatBot& ChatBot::operator=(ChatBot &&source) // Rule of 5 (5/5)
 {
-    std::cout << "ChatBot Moving Assignment: assigning" << &source << " to " << this << std::endl;
+    std::cout << "ChatBot Moving Assignment" << std::endl;
 
     if (this == &source)
         return *this;
@@ -94,11 +94,11 @@ ChatBot& ChatBot::operator=(ChatBot &&source) // Rule of 5 (5/5)
     _image = source._image;
     source._image = NULL;
     _currentNode = source._currentNode;
-    source._currentNode = NULL;
+    source._currentNode = nullptr;
     _rootNode = source._rootNode;
-    source._rootNode = NULL;
+    source._rootNode = nullptr;
     _chatLogic = source._chatLogic;
-    source._rootNode = NULL;
+    source._rootNode = nullptr;
 
     return *this;
     
