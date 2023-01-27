@@ -63,10 +63,10 @@ ChatBot& ChatBot::operator=(const ChatBot &source) // rule of 5 (3/5)
     if(this == &source)
         return *this;
     
-    *_image = *source._image;
-    *_currentNode = *source._currentNode;
-    *_rootNode = *source._rootNode;
-    *_chatLogic = *source._chatLogic;
+    _image = source._image;
+    _currentNode = source._currentNode;
+    _rootNode = source._rootNode;
+    _chatLogic = source._chatLogic;
     return *this;
 }
 
