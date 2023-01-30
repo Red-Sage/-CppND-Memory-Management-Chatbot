@@ -74,6 +74,9 @@ ChatBot& ChatBot::operator=(const ChatBot &source) // rule of 5 (3/5)
 ChatBot::ChatBot(ChatBot &&source) // Rule of 5 (4/5)
 {
     std::cout << "ChatBot Move Constructor" << std::endl;
+
+    // Thanks to Justus F for this question https://knowledge.udacity.com/questions/922060
+    // I think there are bugs in your code but this sent me in the right direction. 
     _chatLogic = source._chatLogic;
     source._chatLogic = nullptr;
 
@@ -88,16 +91,6 @@ ChatBot::ChatBot(ChatBot &&source) // Rule of 5 (4/5)
     _image = source._image;
     source._image = NULL;
 
-    //_currentNode = source._currentNode;
-    //_rootNode = source._rootNode;
-    //_chatLogic->SetChatbotHandle(this);
-    //_image = source._image;
-
-    //source._currentNode = nullptr;
-    //source._rootNode = nullptr;
-    //source._rootNode = nullptr;
-    //source._image = NULL;
-
 }
 
 ChatBot& ChatBot::operator=(ChatBot &&source) // Rule of 5 (5/5)
@@ -107,6 +100,8 @@ ChatBot& ChatBot::operator=(ChatBot &&source) // Rule of 5 (5/5)
     if (this == &source)
         return *this;
 
+    // Thanks to Justus F for this question https://knowledge.udacity.com/questions/922060
+    // I think there are bugs in the code but this sent me in the right direction. 
     _chatLogic = source._chatLogic;
     source._chatLogic = nullptr;
 
