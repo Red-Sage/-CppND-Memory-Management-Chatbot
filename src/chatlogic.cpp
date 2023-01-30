@@ -220,6 +220,7 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
     // add chatbot to graph root node
     ChatBot stack_chatBot = ChatBot("../images/chatbot.png");
     //_chatBot = &stack_chatBot;
+    this->SetChatbotHandle(&stack_chatBot);
 
     // add pointer to chatlogic so that chatbot answers can be passed on to the GUI
     stack_chatBot.SetChatLogicHandle(this);
